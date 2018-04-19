@@ -71,8 +71,8 @@ setopt nosharehistory
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' enable git svn hg
-zstyle ':vcs_info:*' formats ":%b%m%c%u"
-zstyle ':vcs_info:*' actionformats ":%b%f:%F{red}%a%m%c%u"
+zstyle ':vcs_info:*' formats " %b%m%c%u"
+zstyle ':vcs_info:*' actionformats " %b%f:%F{red}%a%m%c%u"
 zstyle ':vcs_info:*' stagedstr '%F{green}+%f'
 zstyle ':vcs_info:*' unstagedstr '%F{yellow}#%f'
 zstyle ':vcs_info:git+set-message:*' hooks check-untracked check-upstream
@@ -92,7 +92,7 @@ zstyle ':vcs_info:git+set-message:*' hooks check-untracked check-upstream
 
 precmd_functions+=(vcs_info)
 setopt prompt_subst
-PROMPT='%B%F{$user_color}%n%b:%B%F{blue}%m%b %F{$user_color}%~ %F{magenta}%$vcs_info_msg_0_%b% > '
+PROMPT='%B%F{$user_color}%n%b:%B%F{blue}%m%b %F{$user_color}%~%F{magenta}${vcs_info_msg_0_}%b> '
 
 # added by travis gem
 [ -f /home/ionel/.travis/travis.sh ] && source /home/ionel/.travis/travis.sh
