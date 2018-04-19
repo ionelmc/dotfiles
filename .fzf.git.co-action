@@ -1,0 +1,10 @@
+#!/bin/bash -eu
+function checkout() {
+    if [[ -n "${1:-}" ]]; then
+        if [[ -n "${2:-}" ]]; then
+            git branch --track -f $1 $2/$1
+        fi
+        git checkout $1
+    fi
+}
+checkout $(echo $* | cut -d, -f3,1 --output-delimiter=' ')

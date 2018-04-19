@@ -1,0 +1,35 @@
+#!/usr/bin/python
+import sys
+import re
+
+branches = {}
+for line in sys.stdin:
+    line = line.strip()
+    if line.startswith('*'):
+        current = 'yes'
+        line = line.strip('* ')
+    else:
+        current = ''
+    if '->' not in line:
+        if line.startswith('remotes/'):
+            _, remote, name = line.split('/', 2)
+        else:
+            remote, name = '', line
+
+        if name not in branches or not remote:
+            branches[name] = remote, current
+output = []
+for name, (remote, current) in branches.items():
+    if current:
+        display = '(*) %s' % name
+    elif remote:
+        display = '%s (%s)' % (name, remote)
+    else:
+        display = name
+
+    output.append((name, display, remote, current))
+output.sort()
+print('\n'.join(
+    ','.join(row)
+    for row in output
+))

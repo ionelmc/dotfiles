@@ -1,0 +1,10 @@
+#!/bin/bash -eu
+function show_log() {
+    git log --date-order --color --graph --pretty=format:'%Cred%h%Creset %C(black bold)%cd %Creset%C(bold)-%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short "$@"
+}
+
+if [[ -z "$2" ]]; then
+    show_log $1
+else
+    show_log $2/$1
+fi
