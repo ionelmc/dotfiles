@@ -1,15 +1,6 @@
-# plugins=(pip dirpersist command-not-found celery colorize django python supervisor git)
-
-source $HOME/.fabric-zsh-completion/fab-completion.zsh
 source /etc/profile.d/apps-bin-path.sh
 source /etc/profile.d/jdk.sh
 
-#export STANDARD_CACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/pip"
-#export WHEELHOUSE="${STANDARD_CACHE_DIR}/Wheelhouse"
-#export PIP_USE_WHEEL="yes"
-#export PIP_DOWNLOAD_CACHE="${STANDARD_CACHE_DIR}/Downloads"
-#export PIP_FIND_LINKS="file://${WHEELHOUSE}"
-#export PIP_WHEEL_DIR="${WHEELHOUSE}"
 export PATH=$PATH:$HOME/bin:$HOME/.local/bin
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=false"
 export PYTHONWARNINGS="ignore:A true SSLContext object is not available"
@@ -32,8 +23,8 @@ antigen bundle docker
 antigen bundle python
 antigen bundle supervisor
 antigen bundle git
-antigen-bundle --loc=lib termsupport
-antigen-bundle --loc=lib key-bindings
+antigen bundle --loc=lib termsupport
+antigen bundle --loc=lib key-bindings
 antigen bundle rimraf/k
 antigen apply
 
