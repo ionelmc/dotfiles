@@ -1,19 +1,13 @@
-source /etc/profile.d/apps-bin-path.sh
-source /etc/profile.d/jdk.sh
 
-export PATH=$PATH:$HOME/bin:$HOME/.local/bin
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=false"
-export PYTHONWARNINGS="ignore:A true SSLContext object is not available"
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.npm/packages/bin
 export EDITOR=nano
-export EDITOR=micro
 export GOPATH=$HOME/.gocode
-
-# alias cm=checkoutmanager
+export PYTHONHUNTERCONFIG='force_colors=True'
+export LANG="en_US.UTF-8"
 
 source ~/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
-#antigen bundle pip
 antigen bundle dirpersist
 antigen bundle command-not-found
 antigen bundle celery
@@ -92,7 +86,7 @@ zstyle ':vcs_info:git+set-message:*' hooks check-untracked check-upstream
 
 precmd_functions+=(vcs_info)
 setopt prompt_subst
-PROMPT='%B%F{$user_color}%n%b:%B%F{blue}%m%b %F{$user_color}%~%F{magenta}${vcs_info_msg_0_}%b> '
+PROMPT='%B%F{$user_color}%n%b:%B%F{blue}%m%b %F{$user_color}%~%F{magenta}${vcs_info_msg_0_}%b%F{reset}> '
 
 # added by travis gem
 [ -f /home/ionel/.travis/travis.sh ] && source /home/ionel/.travis/travis.sh

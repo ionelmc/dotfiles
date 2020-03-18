@@ -1,6 +1,6 @@
 #!/usr/bin/python
-import sys
 import re
+import sys
 
 branches = {}
 for line in sys.stdin:
@@ -29,7 +29,5 @@ for name, (remote, current) in branches.items():
 
     output.append((name, display, remote, current))
 output.sort()
-print('\n'.join(
-    ','.join(row)
-    for row in output
-))
+
+print('\n'.join('\t'.join(row) for row in output))
